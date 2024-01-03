@@ -16,6 +16,16 @@
     </i:Interaction.Triggers>
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox Grid.Row="0" Text="{Binding Axis1, Mode=OneWay}" />
+        <TextBox Grid.Row="1" Text="{Binding Axis2, Mode=OneWay}" />
+        <TextBox Grid.Row="2" Text="{Binding Axis3, Mode=OneWay}" />
+        <TextBox Grid.Row="3" Text="{Binding Axis4, Mode=OneWay}" />
     </Grid>
 </Window>
