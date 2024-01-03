@@ -4,37 +4,27 @@ using Gamepad;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using XInputLib;
 
 namespace Gamepad_test;
 
 internal class MainWindowViewModel : ObservableObject
 {
-    //private GamePad gamePad = new();
+    private GamePad gamePad = new();
 
     public MainWindowViewModel()
     {
-        //if (!gamePad.StartListening())
-        //{
-        //    MessageBox.Show("No gamepad found");
-        //}
-
-
-
-        GameController _selectedController = GameController.RetrieveController();
-        _selectedController.StateChanged += _selectedController_StateChanged;
-        GameController.StartPolling();
+        if (!gamePad.StartListening())
+        {
+            MessageBox.Show("No gamepad found");
+        }
+        else
+        {
+            MessageBox.Show($"Gamepad found:{GamePad.GetJoystickName()}");
+        }
     }
 
     public ICommand WindowClosing => new RelayCommand<CancelEventArgs>((args) =>
     {
-        //GamePad.StopListening();
-        GameController.StopPolling();
+        GamePad.StopListening();
     });
-
-    void _selectedController_StateChanged(object? sender, GameControllerStateChangedEventArgs e)
-    {
-        OnPropertyChanged("SelectedController");
-
-    }
 }
