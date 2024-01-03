@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gamepad\Gamepad.csproj" />
+    <ProjectReference Include="..\XInputLib\XInputLib.csproj" />
   </ItemGroup>
 
 </Project>
