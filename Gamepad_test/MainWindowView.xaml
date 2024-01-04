@@ -3,11 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Gamepad_test"
+        xmlns:uc="clr-namespace:Gamepad_test.UserControls"
         Title="MainWindow" Height="450" Width="800">
 
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
+    
+    <Window.Resources>
+        <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Window.Resources>
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
@@ -21,11 +26,35 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <RadioButton Grid.Row="0" Grid.Column="0" GroupName="Axes" IsChecked="{Binding SelectedAxis, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Throttle}"/>
+        <Label       Grid.Row="0" Grid.Column="1" Content="Throttle" />
+        <TextBox     Grid.Row="0" Grid.Column="2" Text="{Binding Axis1, Mode=OneWay}" />
+        <Separator   Grid.Row="0" Grid.Column="3" Margin="10"/>
+        <TextBox     Grid.Row="0" Grid.Column="4" Text="{Binding Throttle, Mode=OneWay}" />
+
+        <RadioButton Grid.Row="1" Grid.Column="0" GroupName="Axes" IsChecked="{Binding SelectedAxis, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Yaw}"/>
+        <Label       Grid.Row="1" Grid.Column="1" Content="Yaw" />
+        <TextBox     Grid.Row="1" Grid.Column="2" Text="{Binding Axis2, Mode=OneWay}" />
         
-        <TextBox Grid.Row="0" Text="{Binding Axis1, Mode=OneWay}" />
-        <TextBox Grid.Row="1" Text="{Binding Axis2, Mode=OneWay}" />
         <TextBox Grid.Row="2" Text="{Binding Axis3, Mode=OneWay}" />
         <TextBox Grid.Row="3" Text="{Binding Axis4, Mode=OneWay}" />
+        <Grid Grid.Row="4" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <uc:JoystickPad CircleDiameter="{Binding JoystickSize}" LineStrokeColor="Black" PadColor="Red" PadLeft="{Binding Yaw}" PadTop="{Binding Throttle}" PadDiameter="25" Grid.Column="0" />
+            <uc:JoystickPad CircleDiameter="{Binding JoystickSize}" LineStrokeColor="Red" PadColor="Black" PadLeft="{Binding Roll}" PadTop="{Binding Pitch}" PadDiameter="{Binding PadDiameter}" Grid.Column="1" />
+        </Grid>
     </Grid>
 </Window>

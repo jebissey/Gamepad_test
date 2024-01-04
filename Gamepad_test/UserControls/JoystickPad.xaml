@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Gamepad_test.UserControls.JoystickPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Gamepad_test.UserControls">
+    <Canvas>
+        <Ellipse Canvas.Left="0" Canvas.Top="0" 
+                 Width="{Binding CircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                 Height="{Binding CircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                 Stroke="{Binding LineStrokeColor, RelativeSource={RelativeSource AncestorType=UserControl}}" StrokeThickness="2"/>
+        <Line X1="{Binding HalfCircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" Y1="0" 
+              X2="{Binding HalfCircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" Y2="{Binding CircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+              Stroke="{Binding LineStrokeColor, RelativeSource={RelativeSource AncestorType=UserControl}}" StrokeThickness="2"/>
+        <Line X1="0" Y1="{Binding HalfCircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+              X2="{Binding CircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" Y2="{Binding HalfCircleDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+              Stroke="{Binding LineStrokeColor, RelativeSource={RelativeSource AncestorType=UserControl}}" StrokeThickness="2"/>
+        <Ellipse Canvas.Left="{Binding PadLeft, RelativeSource={RelativeSource AncestorType=UserControl}}" Canvas.Top="{Binding PadTop, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                 Width="{Binding PadDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" Height="{Binding PadDiameter, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                 Stroke="{Binding PadColor, RelativeSource={RelativeSource AncestorType=UserControl}}" StrokeThickness="2" 
+                 Fill="{Binding PadColor, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+    </Canvas>
+</UserControl>
