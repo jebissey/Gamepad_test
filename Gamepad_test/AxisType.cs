@@ -3,6 +3,7 @@
 
 internal enum AxisType
 {
+    None = 0,
     Throttle,
     Yaw,
     Pitch,

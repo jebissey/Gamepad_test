@@ -45,9 +45,15 @@
         <RadioButton Grid.Row="1" Grid.Column="0" GroupName="Axes" IsChecked="{Binding SelectedAxis, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Yaw}"/>
         <Label       Grid.Row="1" Grid.Column="1" Content="Yaw" />
         <TextBox     Grid.Row="1" Grid.Column="2" Text="{Binding Axis2, Mode=OneWay}" />
+
+        <RadioButton Grid.Row="2" Grid.Column="0" GroupName="Axes" IsChecked="{Binding SelectedAxis, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Pitch}"/>
+        <Label       Grid.Row="2" Grid.Column="1" Content="Pitch" />
+        <TextBox     Grid.Row="2" Grid.Column="2" Text="{Binding Axis3, Mode=OneWay}" />
+
+        <RadioButton Grid.Row="3" Grid.Column="0" GroupName="Axes" IsChecked="{Binding SelectedAxis, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Roll}"/>
+        <Label       Grid.Row="3" Grid.Column="1" Content="Roll" />
+        <TextBox     Grid.Row="3" Grid.Column="2" Text="{Binding Axis4, Mode=OneWay}" />
         
-        <TextBox Grid.Row="2" Text="{Binding Axis3, Mode=OneWay}" />
-        <TextBox Grid.Row="3" Text="{Binding Axis4, Mode=OneWay}" />
         <Grid Grid.Row="4" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
