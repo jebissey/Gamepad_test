@@ -44,7 +44,7 @@ internal class MainWindowViewModel : ObservableObject
         set
         {
             SetProperty(ref selectedAxis, value);
-            MessageBox.Show("Move the pad");
+            AutoClosingMessageBox.Show("Move the pad", "Caption", 2000);
             switch (selectedAxis)
             {
                 case AxisType.Throttle:
